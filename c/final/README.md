@@ -1,0 +1,1 @@
+[problem_link](https://www.hackerrank.com/contests/b6-final-c/challenges)
