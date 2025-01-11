@@ -8,17 +8,17 @@ int main() {
     while (T--) {
         string S;
         cin >> S;
-        queue<char> q;
+        stack<char> st;
         
         for (char c : S) {
-            if (c == '1' && !q.empty() && q.back() == '0') {
-                q.pop(); 
+            if (c == '1' && !st.empty() && st.top() == '0') {
+                st.pop();
             } else {
-                q.push(c);
+                st.push(c);
             }
         }
         
-        if (q.empty()) {
+        if (st.empty()) {
             cout << "YES\n";
         } else {
             cout << "NO\n";
