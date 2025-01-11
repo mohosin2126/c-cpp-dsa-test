@@ -25,17 +25,17 @@ int main() {
         return 0;
     }
 
-    bool is_same = true;
+    int mismatch_found = 0; 
     while (!st.empty() && !q.empty()) {
         if (st.top() != q.front()) {
-            is_same = false;
+            mismatch_found = 1;
             break;
         }
         st.pop();
         q.pop();
     }
 
-    if (is_same) {
+    if (mismatch_found == 0) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;
