@@ -19,17 +19,18 @@ Node *InputTree()
 {
     int val;
     cin >> val;
+    Node *root;
 
     if (val == -1)
         return NULL;
 
-    Node *root = new Node(val);
+    root = new Node(val);
     queue<Node *> q;
     q.push(root);
 
     while (!q.empty())
     {
-        Node *current = q.front();
+        Node *p = q.front();
         q.pop();
 
         int l, r;
@@ -37,16 +38,17 @@ Node *InputTree()
 
         if (l != -1)
         {
-            current->left = new Node(l);
-            q.push(current->left);
+            p->left = new Node(l);
+            q.push(p->left);
         }
 
         if (r != -1)
         {
-            current->right = new Node(r);
-            q.push(current->right);
+            p->right = new Node(r);
+            q.push(p->right);
         }
     }
+
     return root;
 }
 
