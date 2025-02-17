@@ -1,13 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 char grid[1005][1005];
 bool vis[1005][1005];
+
 vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 int n, m;
+
 bool isValid(int x, int y)
 {
     return (x >= 0 && x < n && y >= 0 && y < m && grid[x][y] == '.' && !vis[x][y]);
 }
+
 int bfs(int si, int sj)
 {
     queue<pair<int, int>> q;
@@ -31,8 +35,10 @@ int bfs(int si, int sj)
             }
         }
     }
+
     return area;
 }
+
 int main()
 {
     cin >> n >> m;

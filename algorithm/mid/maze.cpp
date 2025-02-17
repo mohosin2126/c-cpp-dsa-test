@@ -1,13 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int n, m;
 char maze[1005][1005];
 bool vis[1005][1005];
+
 vector<pair<int, int>> moves = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+
 bool isValid(int x, int y)
 {
     return (x >= 0 && x < n && y >= 0 && y < m && (maze[x][y] == '.' || maze[x][y] == 'D') && !vis[x][y]);
 }
+
 bool bfs(int sx, int sy, int dx, int dy)
 {
     queue<pair<int, int>> q;
@@ -48,6 +52,7 @@ bool bfs(int sx, int sy, int dx, int dy)
     }
     return false;
 }
+
 int main()
 {
     cin >> n >> m;

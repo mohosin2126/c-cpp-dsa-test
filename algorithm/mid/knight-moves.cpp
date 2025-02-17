@@ -1,10 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 vector<pair<int, int>> moves = {{-2, -1}, {-2, 1}, {2, -1}, {2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}};
+
 bool isValid(int x, int y, int n, int m, vector<vector<bool>> &vis)
 {
     return (x >= 0 && x < n && y >= 0 && y < m && !vis[x][y]);
 }
+
 int bfs(int n, int m, int sx, int sy, int dx, int dy)
 {
     vector<vector<bool>> vis(n, vector<bool>(m, false));
@@ -35,6 +38,7 @@ int bfs(int n, int m, int sx, int sy, int dx, int dy)
     }
     return -1;
 }
+
 int main()
 {
     int t;
@@ -47,5 +51,6 @@ int main()
         cin >> dx >> dy;
         cout << bfs(n, m, sx, sy, dx, dy) << endl;
     }
+    
     return 0;
 }
