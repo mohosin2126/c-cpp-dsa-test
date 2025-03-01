@@ -3,57 +3,37 @@ using namespace std;
 
 int main()
 {
-    int n, e;
-    cin >> n >> e;
-
-    vector<int> from(e), to(e), cost(e);
-    for (int i = 0; i < e; i++)
-    {
-        cin >> from[i] >> to[i] >> cost[i];
-    }
-
-    int source;
-    cin >> source;
-
     int t;
     cin >> t;
-
-    const long long INF = 1e18;
-    vector<long long> dist(n + 1, INF);
-    dist[source] = 0;
-
-    for (int i = 1; i < n; i++)
-    {
-        bool updated = false;
-        for (int j = 0; j < e; j++)
-        {
-            if (dist[from[j]] != INF && dist[from[j]] + cost[j] < dist[to[j]])
-            {
-                dist[to[j]] = dist[from[j]] + cost[j];
-                updated = true;
-            }
-        }
-        if (!updated)
-            break;
-    }
-
-    for (int j = 0; j < e; j++)
-    {
-        if (dist[from[j]] != INF && dist[from[j]] + cost[j] < dist[to[j]])
-        {
-            cout << "Negative Cycle Detected" << "\n";
-            return 0;
-        }
-    }
-
     while (t--)
     {
-        int dest;
-        cin >> dest;
-        if (dist[dest] == INF)
-            cout << "Not Possible" << "\n";
-        else
-            cout << dist[dest] << "\n";
+        vector<int> height;
+        priority_queue<int> pq;
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++)
+        {
+            int h;
+            cin >> h;
+            height.push_back(h);
+            pq.push(h);
+        }
+
+        vector<int> v;
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (height[j] == pq.top())
+                {
+                    v.push_back(j);
+                }
+            }
+            pq.pop();
+        }
+
+        sort(v.begin(), v.end());
+        cout << v[0] << " " << v[1] << endl;
     }
 
     return 0;
